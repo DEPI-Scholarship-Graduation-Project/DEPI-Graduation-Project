@@ -1,30 +1,27 @@
 package pages;
 
-import org.openqa.selenium.By;
+import components.HeaderBar;
+import components.SideBar;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage {
     WebDriver driver;
+    private SideBar sideBar;
+    private HeaderBar headerBar;
 
-    // Locators with private access
-    private final By websiteLogo = By.cssSelector("img[alt='Tricentis Demo Web Shop']");
-    private final By loginLink = By.linkText("Log in");
 
     // Constructor
     public HomePage(WebDriver driver) {
         this.driver = driver;
+        sideBar = new SideBar(driver);
+        headerBar = new HeaderBar(driver);
     }
 
-
-    // Actions
-    public boolean getWebsiteLogoElement() {
-        return driver.findElement(websiteLogo).isDisplayed();
+    public SideBar getSideBar() {
+        return sideBar;
     }
-
-    public LoginPage clickOnLoginLink() {
-        driver.findElement(loginLink).click();
-        return new LoginPage(driver);
+    public HeaderBar getHederBar() {
+        return headerBar;
     }
-
 
 }
