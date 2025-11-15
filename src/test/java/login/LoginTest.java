@@ -32,13 +32,16 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(dataProvider = "loginData")
-    public void VerifyUserLoginSuccessfulTest(JsonNode data){
+    public void VerifyUserLoginSuccessfulTest(JsonNode data) {
+
         LoginPage loginPage = homePage.getHederBar().clickOnLoginLink();
         String email = data.get("email").asText() ;
         String password = data.get("password").asText();
+        String result = data.get("result").asText();
 
         loginPage.enterUserEmail(email);
         loginPage.enterPassword(password);
+
         HomePage homePage = loginPage.clickLoginButton();
 
         try {
@@ -48,7 +51,15 @@ public class LoginTest extends BaseTest {
             logger.info("No alert present after login.");
         }
 
-        Assert.assertTrue(homePage.getHederBar().getWebsiteLogoElement());
-        logger.info("User Login Successful!");
+        if(result.equalsIgnoreCase("success")){
+            Assert.assertTrue(homePage.getHederBar().getWebsiteLogoElement());
+            logger.info("User Login Successful!");
+        }else {
+            loginPage.clickLoginButton();
+            String expected = "Login was unsuccessful" ;
+            Assert.assertTrue(loginPage.getMessageErrorText().contains(expected));
+            logger.info("Login Failed!");
+        }
+
     }
 }

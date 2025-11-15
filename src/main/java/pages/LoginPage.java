@@ -17,6 +17,7 @@ public class LoginPage {
     private By username = By.id("Email");
     private By password = By.id("Password");
     private By loginButton = By.cssSelector("input[type='submit']");
+    private By messageError = By.cssSelector(".message-error span") ;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -25,6 +26,10 @@ public class LoginPage {
 
     public String getPageTitleElement() {
         return driver.findElement(pageTitle).getText();
+    }
+    public String getMessageErrorText(){
+        return elementWaitUtility.waitForElementToBeVisible(messageError, 10).getText() ;
+
     }
 
     public void enterUserEmail(String email) {
