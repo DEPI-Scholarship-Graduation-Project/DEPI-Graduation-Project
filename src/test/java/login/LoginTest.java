@@ -1,17 +1,29 @@
 package login;
 
 import base.BaseTest;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
+import utility.JsonReader;
 
 public class LoginTest extends BaseTest {
     private final Logger logger = LoggerFactory.getLogger(LoginTest.class);
+
+
+    @DataProvider(name = "loginData")
+    public Object[][] loginDataProvider() {
+        return JsonReader.getJsonData(
+                "src/test/resources/testdata/loginData.json",
+                "loginTests"
+        );
+    }
 
     @Test
     public void VerifyLoginPageDisplayedTest() {
@@ -19,16 +31,18 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginPage.getPageTitleElement().contains("Welcome, Please Sign In!"));
     }
 
-    @Test
-    public void VerifyUserLoginSuccessfulTest(){
+    @Test(dataProvider = "loginData")
+    public void VerifyUserLoginSuccessfulTest(JsonNode data){
         LoginPage loginPage = homePage.getHederBar().clickOnLoginLink();
-        loginPage.enterUserName("testaffaires8@gmail.com");
-        loginPage.enterPassword("Demo-shop-1234");
+        String email = data.get("email").asText() ;
+        String password = data.get("password").asText();
+
+        loginPage.enterUserEmail(email);
+        loginPage.enterPassword(password);
         HomePage homePage = loginPage.clickLoginButton();
 
         try {
             Alert alert = driver.switchTo().alert();
-            logger.warn("Unexpected alert found: {}", alert.getText());
             alert.accept();
         } catch (NoAlertPresentException e) {
             logger.info("No alert present after login.");
