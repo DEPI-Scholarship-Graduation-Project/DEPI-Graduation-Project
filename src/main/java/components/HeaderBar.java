@@ -6,12 +6,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
 import pages.LoginPage;
+import utility.ElementWaitUtility;
 
 import java.time.Duration;
 
 public class HeaderBar {
     private WebDriver driver;
-    private WebDriverWait wait;
+    private ElementWaitUtility elementWaitUtility;
 
     private final By websiteLogoLink = By.cssSelector("img[alt='Tricentis Demo Web Shop']");
 
@@ -19,6 +20,7 @@ public class HeaderBar {
 
     public HeaderBar(WebDriver driver) {
         this.driver = driver;
+        elementWaitUtility = new ElementWaitUtility(driver);
     }
 
     public boolean getWebsiteLogoElement(){
@@ -27,18 +29,14 @@ public class HeaderBar {
     }
 
     public HomePage clickOnWebsiteLogoLink() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(websiteLogoLink)));
 
-        driver.findElement(websiteLogoLink).click();
+        elementWaitUtility.click(websiteLogoLink, 10);
         return new HomePage(driver);
     }
 
     public LoginPage clickOnLoginLink() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(loginLink)));
 
-        driver.findElement(loginLink).click();
+        elementWaitUtility.click(loginLink, 10);
         return new LoginPage(driver);
     }
 
