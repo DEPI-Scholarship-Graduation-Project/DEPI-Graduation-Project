@@ -42,22 +42,13 @@ public class LoginTest extends BaseTest {
         loginPage.enterUserEmail(email);
         loginPage.enterPassword(password);
 
-        HomePage homePage = loginPage.clickLoginButton();
-
-        try {
-            Alert alert = driver.switchTo().alert();
-            alert.accept();
-        } catch (NoAlertPresentException e) {
-            logger.info("No alert present after login.");
-        }
+        homePage = loginPage.clickLoginButton();
 
         if(result.equalsIgnoreCase("success")){
-            Assert.assertTrue(homePage.getHederBar().getWebsiteLogoElement());
+            Assert.assertTrue(homePage.getHederBar().isUserLoggedIn());
             logger.info("User Login Successful!");
         }else {
-            loginPage.clickLoginButton();
-            String expected = "Login was unsuccessful" ;
-            Assert.assertTrue(loginPage.getMessageErrorText().contains(expected));
+            Assert.assertFalse(loginPage.getHederBar().isUserLoggedIn());
             logger.info("Login Failed!");
         }
 
