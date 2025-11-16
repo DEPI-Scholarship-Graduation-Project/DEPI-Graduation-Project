@@ -1,7 +1,7 @@
 package base;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
@@ -17,7 +17,7 @@ public class BaseTest {
 
     @BeforeClass
     public void beforeClass() {
-        driver = new EdgeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
     }

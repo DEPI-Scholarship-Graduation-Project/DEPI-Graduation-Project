@@ -11,6 +11,7 @@ import java.time.Duration;
 
 public class ElementWaitUtility {
     WebDriver driver;
+
     public ElementWaitUtility(WebDriver driver){
         this.driver = driver;
     }
@@ -22,7 +23,7 @@ public class ElementWaitUtility {
 
     public WebElement waitForElementToBeClickable(By element, int waitSeconds){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-        return wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(element)));
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public Boolean waitForElementToBeSelected(By element, int waitSeconds){
@@ -32,7 +33,7 @@ public class ElementWaitUtility {
 
     public Boolean waitForElementToBeInvisible(By element, int waitSeconds){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-        return wait.until(ExpectedConditions.invisibilityOf(driver.findElement(element)));
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
 
     public void click(By locator, int waitSeconds){
@@ -42,11 +43,10 @@ public class ElementWaitUtility {
     public void enterText(By locator, int waitSeconds, String text){
         waitForElementToBeVisible(locator, waitSeconds).sendKeys(text);
     }
+
     public void selectOptionFromDropDown(By locator, int waitSeconds, String visibleText) {
         WebElement dropdown = waitForElementToBeVisible(locator, waitSeconds);
         Select select = new Select(dropdown);
         select.selectByVisibleText(visibleText);
     }
-
-
 }

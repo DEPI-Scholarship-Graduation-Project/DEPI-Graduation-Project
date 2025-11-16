@@ -18,6 +18,8 @@ public class HeaderBar {
 
     private final By loginLink = By.linkText("Log in");
 
+    private By logoutLink = By.linkText("Log out");
+
     public HeaderBar(WebDriver driver) {
         this.driver = driver;
         elementWaitUtility = new ElementWaitUtility(driver);
@@ -40,4 +42,15 @@ public class HeaderBar {
         return new LoginPage(driver);
     }
 
+
+    public boolean isUserLoggedIn() {
+        elementWaitUtility.waitForElementToBeVisible(logoutLink, 3);
+        return !driver.findElements(logoutLink).isEmpty();
+    }
+
+    public HomePage getWebsiteLogoutLink() {
+
+        elementWaitUtility.click(logoutLink, 10);
+        return new HomePage(driver);
+    }
 }
