@@ -3,7 +3,7 @@ The DEPI scholarship graduation project
 ## Important links:
 Main Website Link: https://demowebshop.tricentis.com/
 
-API Testing Website Link: https://automationexercise.com/
+API Testing Website Link: https://automationexercise.com/api_list
 
 DB Testing Website Link: https://demo.opencart.com/ (localhost)
 
