@@ -37,4 +37,10 @@ public class LoginPage {
         driver.findElement(loginButton).click();
         return new HomePage(driver);
     }
+
+    public PasswordRecoveryPage clickOnForgotPasswordLink()
+    {
+        driver.findElement(forgotPasswordLink).click();
+        return new PasswordRecoveryPage(driver);
+    }
 }
