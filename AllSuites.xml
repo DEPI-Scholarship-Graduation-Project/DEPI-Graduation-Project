@@ -1,0 +1,6 @@
+<suite name="AllSuites">
+    <suite-files>
+        <suite-file path="TestSearchFunctionality.xml"/>
+        <suite-file path="TestLoginFunctionality.xml"/>
+    </suite-files>
+</suite>
