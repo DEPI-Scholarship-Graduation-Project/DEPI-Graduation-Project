@@ -1,0 +1,33 @@
+{
+  "productTests": [
+    {
+      "productTitle": "comput",
+      "result": "found"
+    },
+    {
+      "productTitle": "xyx",
+      "result": "notFound"
+    },
+    {
+      "productTitle": "simple",
+      "result": "found"
+    },
+    {
+      "productTitle": "14.1-inch Laptop",
+      "result": "found"
+    },
+    {
+      "productTitle": "Build your own expensive computer",
+      "result": "found"
+    },
+    {
+      "productTitle": "nononoon",
+      "result": "notFound"
+    },
+    {
+      "productTitle": "",
+      "result": "empty"
+    }
+
+  ]
+}

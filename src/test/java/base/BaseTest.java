@@ -2,8 +2,11 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
@@ -15,31 +18,43 @@ import utility.ConfigReader;
 public class BaseTest {
     protected WebDriver driver;
     protected HomePage homePage; // so that all test cases start from homePage
-
+    private ChromeOptions options ;
 
     private final Logger logger = LoggerFactory.getLogger(BaseTest.class) ;
 
     @BeforeClass
     public void beforeClass() {
-        String browser = ConfigReader.get("browser") ;
+        String browser = ConfigReader.get("browser");
 
-        switch (browser){
+        switch (browser.toLowerCase()){
             case "chrome":
-                driver = new ChromeDriver();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--window-size=1920,1080");
+                driver = new ChromeDriver(chromeOptions);
                 break;
+
             case "edge":
-                driver = new EdgeDriver();
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("--headless");
+                edgeOptions.addArguments("--window-size=1920,1080");
+                driver = new EdgeDriver(edgeOptions);
                 break;
+
             case "firefox":
-                driver = new FirefoxDriver();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addArguments("--headless");
+                firefoxOptions.addArguments("--window-size=1920,1080");
+                driver = new FirefoxDriver(firefoxOptions);
                 break;
+
             default:
-                throw new RuntimeException("Invalid browser");
+                throw new RuntimeException("Invalid browser: " + browser);
         }
 
-        driver.manage().window().maximize();
         homePage = new HomePage(driver);
     }
+
 
     @BeforeMethod
     public void beforeMethod() {

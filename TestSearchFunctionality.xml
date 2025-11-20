@@ -1,0 +1,7 @@
+<suite name="SearchTest">
+    <test name="SearchTest">
+        <classes>
+            <class name="search.SearchTest" />
+        </classes>
+    </test>
+</suite>
