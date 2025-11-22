@@ -29,21 +29,27 @@ public class BaseTest {
         switch (browser.toLowerCase()){
             case "chrome":
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless");
+                if(Boolean.parseBoolean(ConfigReader.get("headless"))){
+                    chromeOptions.addArguments("--headless");
+                }
                 chromeOptions.addArguments("--window-size=1920,1080");
                 driver = new ChromeDriver(chromeOptions);
                 break;
 
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.addArguments("--headless");
+                if(Boolean.parseBoolean(ConfigReader.get("headless"))){
+                    edgeOptions.addArguments("--headless");
+                }
                 edgeOptions.addArguments("--window-size=1920,1080");
                 driver = new EdgeDriver(edgeOptions);
                 break;
 
             case "firefox":
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments("--headless");
+                if(Boolean.parseBoolean(ConfigReader.get("headless"))){
+                    firefoxOptions.addArguments("--headless");
+                }
                 firefoxOptions.addArguments("--window-size=1920,1080");
                 driver = new FirefoxDriver(firefoxOptions);
                 break;

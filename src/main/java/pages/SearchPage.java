@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utility.ConfigReader;
 import utility.ElementWaitUtility;
 
 import java.security.PublicKey;
@@ -16,6 +17,7 @@ public class SearchPage {
     WebDriver driver ;
     HeaderBar headerBar ;
     ElementWaitUtility elementWaitUtility ;
+
 
     private final By searchResultProductsTitle = By.cssSelector(".search-results .item-box .details .product-title a");
 

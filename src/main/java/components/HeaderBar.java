@@ -34,19 +34,19 @@ public class HeaderBar {
 
     public HomePage clickOnWebsiteLogoLink() {
 
-        elementWaitUtility.click(websiteLogoLink, 10);
+        elementWaitUtility.click(websiteLogoLink);
         return new HomePage(driver);
     }
 
     public LoginPage clickOnLoginLink() {
 
-        elementWaitUtility.click(loginLink, 10);
+        elementWaitUtility.click(loginLink);
         return new LoginPage(driver);
     }
 
     public SearchPage searchProduct(String productTitle) {
-        elementWaitUtility.enterText(searchBox, 3, productTitle);
-        elementWaitUtility.click(searchButton, 3);
+        elementWaitUtility.enterText(searchBox, productTitle);
+        elementWaitUtility.click(searchButton);
         // if alert appears then success
         try {
             driver.switchTo().alert().accept();
@@ -58,13 +58,13 @@ public class HeaderBar {
     }
 
     public boolean isUserLoggedIn() {
-        elementWaitUtility.waitForElementToBeVisible(logoutLink, 3);
+        elementWaitUtility.waitForElementToBeVisible(logoutLink);
         return !driver.findElements(logoutLink).isEmpty();
     }
 
     public HomePage getWebsiteLogoutLink() {
 
-        elementWaitUtility.click(logoutLink, 10);
+        elementWaitUtility.click(logoutLink);
         return new HomePage(driver);
     }
 }
