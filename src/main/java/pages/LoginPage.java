@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ByAll;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utility.ConfigReader;
 import utility.ElementWaitUtility;
 
 import java.util.*;
@@ -39,22 +40,22 @@ public class LoginPage {
     }
 
     public String getMessageErrorText(){
-        return elementWaitUtility.waitForElementToBeVisible(messageError, 10).getText() ;
+        return elementWaitUtility.waitForElementToBeVisible(messageError).getText() ;
     }
 
     public void enterUserEmail(String email) {
 
-        elementWaitUtility.enterText(formElements.get("email"), 3, email);
+        elementWaitUtility.enterText(formElements.get("email"), email);
     }
 
     public void enterPassword(String pass) {
 
-        elementWaitUtility.enterText(formElements.get("password"), 3, pass);
+        elementWaitUtility.enterText(formElements.get("password"), pass);
     }
 
     public HomePage clickLoginButton() {
 
-        elementWaitUtility.click(formElements.get("submit"), 3);
+        elementWaitUtility.click(formElements.get("submit"));
         return new HomePage(driver);
     }
 
