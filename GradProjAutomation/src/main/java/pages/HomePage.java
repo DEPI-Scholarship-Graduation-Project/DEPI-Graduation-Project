@@ -13,9 +13,11 @@ public class HomePage {
 
     //Locators
     //Only in Guest Mode
-    private By registerLink = By.linkText("Register");
-    private By loginLink = By.linkText("Log in");
+    private final By registerLink = By.linkText("Register");
+    private final By loginLink = By.linkText("Log in");
     //Only in Logged-in Mode
+    private final By myAccountLink = By.xpath("//a[@class='account']");
+    private final By logoutLink = By.linkText("Log out");
     //Other Locators can be added here
 
     //Actions
@@ -25,10 +27,19 @@ public class HomePage {
         return new RegisterPage(driver);
     }
 
-    public LoginPage clickOnLoginPage()
+    public LoginPage clickOnLoginLink()
     {
         driver.findElement(loginLink).click();
         return new LoginPage(driver);
     }
 
+    public String getLoggedInEmail()
+    {
+        return driver.findElement(myAccountLink).getText();
+    }
+
+    public void clickOnLogoutLink()
+    {
+        driver.findElement(logoutLink).click();
+    }
 }

@@ -10,11 +10,13 @@ public class LoginPage {
     }
 
     //Locators
-    private By emailBox = By.xpath("//input[@id='Email']");
-    private By passwordBox = By.xpath("//input[@id='Password']");
-    private By rememberMeCheckBox = By.xpath("//input[@id='RememberMe']");
-    private By forgotPasswordLink = By.linkText("Forgot password?");
-    private By loginButton = By.xpath("//input[@value='Log in']");
+    private final By emailBox = By.xpath("//input[@id='Email']");
+    private final By passwordBox = By.xpath("//input[@id='Password']");
+    private final By rememberMeCheckBox = By.xpath("//input[@id='RememberMe']");
+    private final By forgotPasswordLink = By.linkText("Forgot password?");
+    private final By loginButton = By.xpath("//input[@value='Log in']");
+    private final By invalidEmailFormatMessage = By.xpath("//span[@class='field-validation-error']");
+    private final By failedLoginErrorMessage = By.xpath("//div[@class='validation-summary-errors']");
 
     //Actions
     public void insertEmail(String email)
@@ -32,15 +34,23 @@ public class LoginPage {
         driver.findElement(rememberMeCheckBox).click();
     }
 
-    public HomePage clickOnLoginButton()
+    public void clickOnLoginButton()
     {
         driver.findElement(loginButton).click();
-        return new HomePage(driver);
     }
 
     public PasswordRecoveryPage clickOnForgotPasswordLink()
     {
         driver.findElement(forgotPasswordLink).click();
         return new PasswordRecoveryPage(driver);
+    }
+
+    public String getInvalidEmailFormatMessage()
+    {
+        return driver.findElement(invalidEmailFormatMessage).getText();
+    }
+
+    public String getFailedLoginErrorMessage() {
+        return driver.findElement(failedLoginErrorMessage).getText();
     }
 }
