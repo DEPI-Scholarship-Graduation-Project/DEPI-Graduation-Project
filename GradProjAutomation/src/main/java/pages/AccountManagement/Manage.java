@@ -1,0 +1,41 @@
+package pages.AccountManagement;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class Manage {
+    public WebDriver driver;
+    WebDriverWait wait;
+
+    public Manage(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    private final By addresses = By.linkText("Customer info");
+    private final By changePassword = By.linkText("Addresses");
+    private final By orders = By.linkText("Orders");
+    private final By info = By.linkText("Change password");
+
+    public void NavToAddresses() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(addresses));
+        driver.findElement(addresses).click();
+    }
+
+    public void navToOrders() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(orders));
+        driver.findElement(orders).click();
+    }
+    public void navToInfo() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(info));
+        driver.findElement(info).click();
+    }
+    public void navToChangePassword() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(changePassword));
+        driver.findElement(changePassword).click();
+    }
+}
