@@ -1,7 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="AllSuites">
+
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+
     <suite-files>
         <suite-file path="TestLoginFunctionality.xml"/>
         <suite-file path="TestSearchFunctionality.xml"/>
         <suite-file path="TestViewProductFunctionality.xml"/>
     </suite-files>
+
 </suite>
