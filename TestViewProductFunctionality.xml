@@ -1,0 +1,7 @@
+<suite name="ViewProductTest">
+    <test name="ViewProductTest">
+        <classes>
+            <class name="view.ViewProductTest" />
+        </classes>
+    </test>
+</suite>
