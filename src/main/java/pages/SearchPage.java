@@ -35,6 +35,7 @@ public class SearchPage {
         headerBar = new HeaderBar(driver);
         elementWaitUtility = new ElementWaitUtility(driver);
     }
+
     public List<String> getSearchResultProducts() {
        List <WebElement> searchResultProducts = driver.findElements(searchResultProductsTitle);
        List<String> searchResultProductsTitle = new ArrayList<String>();
@@ -56,8 +57,11 @@ public class SearchPage {
         return found;
     }
 
-
-
+    public ViewProduct clickOnProductTitle(String productTitle){
+        By productTitleElement = By.xpath("//a[contains(text(), '" + productTitle + "')]");
+        elementWaitUtility.click(productTitleElement);
+        return new ViewProduct(driver);
+    }
 
 
     public HeaderBar getHeaderBar() {
