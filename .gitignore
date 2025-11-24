@@ -10,8 +10,8 @@ target/
 .idea/compiler.xml
 .idea/libraries/
 hs_err_pid23980.log
-.allure/allure-2.8.1
-.allure
+/allure/allure-2.8.1
+/allure
 *.iws
 *.iml
 *.ipr
