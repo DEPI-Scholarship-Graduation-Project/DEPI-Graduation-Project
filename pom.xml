@@ -1,5 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>depi</groupId>
@@ -8,21 +10,21 @@
   <packaging>jar</packaging>
 
   <name>amit</name>
-  <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+
+    <!-- Selenium -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
       <version>4.35.0</version>
     </dependency>
 
-
+    <!-- TestNG -->
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
@@ -30,6 +32,14 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- Allure + TestNG Integration -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>2.31.0</version>
+    </dependency>
+
+    <!-- Logging -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -40,23 +50,21 @@
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.5.18</version>
-      <scope>compile</scope>
     </dependency>
-    <!-- Jackson Core -->
+
+    <!-- Jackson -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
       <version>2.17.1</version>
     </dependency>
 
-    <!-- Jackson Databind -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>2.17.1</version>
     </dependency>
 
-    <!-- Jackson Annotations -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
@@ -67,18 +75,38 @@
 
   <build>
     <plugins>
+
+      <!-- Allure Maven Plugin (generates/serves report) -->
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>2.10.0</version>
+      </plugin>
+
+      <!-- TestNG Runner + Allure Results -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.1.2</version>
         <configuration>
+
+          <!-- Your TestNG Suite File -->
           <suiteXmlFiles>
             <suiteXmlFile>AllSuites.xml</suiteXmlFile>
           </suiteXmlFiles>
+
+          <!-- REQUIRED for Allure to create allure-results -->
+          <systemProperties>
+            <property>
+              <name>allure.results.directory</name>
+              <value>target/allure-results</value>
+            </property>
+          </systemProperties>
+
         </configuration>
       </plugin>
+
     </plugins>
   </build>
-
 
 </project>
