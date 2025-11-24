@@ -43,6 +43,12 @@ public class HeaderBar {
         elementWaitUtility.click(loginLink);
         return new LoginPage(driver);
     }
+    public HomePage clickOnLogOutLink() {
+
+        elementWaitUtility.click(logoutLink);
+        return new HomePage(driver);
+    }
+
 
     public SearchPage searchProduct(String productTitle) {
         elementWaitUtility.enterText(searchBox, productTitle);
@@ -61,6 +67,12 @@ public class HeaderBar {
         elementWaitUtility.waitForElementToBeVisible(logoutLink);
         return !driver.findElements(logoutLink).isEmpty();
     }
+
+    public boolean isUserNotLoggedIn() {
+        elementWaitUtility.waitForElementToBeVisible(loginLink);
+        return !driver.findElements(loginLink).isEmpty();
+    }
+
 
     public HomePage getWebsiteLogoutLink() {
 

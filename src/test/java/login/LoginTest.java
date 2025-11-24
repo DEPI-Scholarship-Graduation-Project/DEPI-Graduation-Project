@@ -43,14 +43,13 @@ public class LoginTest extends BaseTest {
         loginPage.enterPassword(password);
 
         homePage = loginPage.clickLoginButton();
-        driver.switchTo().alert().accept();
 
         if(result.equalsIgnoreCase("success")){
-            homePage = loginPage.clickLoginButton();
             Assert.assertTrue(homePage.getHederBar().isUserLoggedIn());
+            homePage.getHederBar().clickOnLogOutLink() ;
             logger.info("User Login Successful!");
         }else {
-            Assert.assertFalse(loginPage.getHederBar().isUserLoggedIn());
+            Assert.assertTrue(homePage.getHederBar().isUserNotLoggedIn());
             logger.info("Login Failed!");
         }
 

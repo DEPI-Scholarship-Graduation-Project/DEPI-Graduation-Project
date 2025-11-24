@@ -25,9 +25,8 @@ public class LoginPage {
     private Map<String, By> formElements = new HashMap<String, By>() {{
         put("email", By.id("Email"));
         put("password", By.id("Password"));
-        put("submit", By.cssSelector("input[type='submit']"));
+        put("submit", By.xpath("//input[@value='Log in']"));
     }};
-
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         headerBar = new HeaderBar(driver);
