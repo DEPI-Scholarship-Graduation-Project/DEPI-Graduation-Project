@@ -6,10 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utility.ConfigReader;
 import utility.ElementWaitUtility;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,10 +55,10 @@ public class SearchPage {
         return found;
     }
 
-    public ViewProduct clickOnProductTitle(String productTitle){
+    public ViewProductPage clickOnProductTitle(String productTitle){
         By productTitleElement = By.xpath("//a[contains(text(), '" + productTitle + "')]");
         elementWaitUtility.click(productTitleElement);
-        return new ViewProduct(driver);
+        return new ViewProductPage(driver);
     }
 
 

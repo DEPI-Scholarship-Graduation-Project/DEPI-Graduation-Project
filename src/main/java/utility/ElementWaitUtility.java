@@ -44,6 +44,10 @@ public class ElementWaitUtility {
     public void enterText(By locator, String text){
         waitForElementToBeVisible(locator).sendKeys(text);
     }
+    // getText
+    public String getText(By locator){
+        return waitForElementToBeVisible(locator).getText();
+    }
 
     public void selectOptionFromDropDown(By locator, String visibleText) {
         WebElement dropdown = waitForElementToBeVisible(locator);

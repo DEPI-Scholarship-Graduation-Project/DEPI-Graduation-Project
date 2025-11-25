@@ -1,7 +1,7 @@
 <suite name="LoginTest">
     <test name="LoginTest">
         <classes>
-            <class name="login.LoginTest" />
+            <class name="LoginTest" />
         </classes>
     </test>
 </suite>
