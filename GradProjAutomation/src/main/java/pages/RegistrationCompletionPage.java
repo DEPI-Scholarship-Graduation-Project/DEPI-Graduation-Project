@@ -10,17 +10,16 @@ public class RegistrationCompletionPage {
     }
 
     //Locators
-    private By completionMessage = By.cssSelector(".result");
-    private By continueButton = By.xpath("//input[@value='Continue']");
+    private final By completionMessage = By.cssSelector(".result");
+    private final By continueButton = By.xpath("//input[@value='Continue']");
 
     //Actions
-    public String getCompletionMessage()
-    {
+    public String getCompletionMessage() {
         return driver.findElement(completionMessage).getText();
     }
-    public HomePage clickOnContinueButton()
+
+    public void clickOnContinueButton()
     {
         driver.findElement(continueButton).click();
-        return new HomePage(driver);
     }
 }
