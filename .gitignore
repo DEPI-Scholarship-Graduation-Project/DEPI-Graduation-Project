@@ -11,7 +11,7 @@ target/
 .idea/libraries/
 hs_err_pid23980.log
 /allure/allure-2.8.1
-/allure
+.allure
 *.iws
 *.iml
 *.ipr
