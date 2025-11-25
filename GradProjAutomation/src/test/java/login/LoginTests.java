@@ -8,8 +8,8 @@ import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
     LoginPage loginPage;
-    String validEmail = "ironmedo100@gmail.com";
-    String validPassword = "z016369im";
+    String validEmail = "mohamed123.aziz@example.com";
+    String validPassword = "QaTest@123";
     String invalidEmailFormat = "mohamed.azizexample.com";
     String nonRegisteredEmail = "m.aziz@example.com";
     String invalidPassword = "QaTest@123456";
@@ -20,21 +20,6 @@ public class LoginTests extends BaseTest {
         loginPage.insertEmail(email);
         loginPage.insertPassword(password);
         loginPage.clickOnLoginButton();
-    }
-
-    private void logoutBeforeTest()
-    {
-        try {
-            homePage.clickOnLogoutLink();
-            System.out.println("Optional element found and clicked.");
-        } catch (NoSuchElementException e) {
-            System.out.println("Optional element not present. Skipping action and continuing test.");
-        }
-    }
-
-    private void assertTestResult(String actualResult, String expectedResult)
-    {
-        Assert.assertTrue(actualResult.contains(expectedResult));
     }
 
     @Test(priority = 1)
