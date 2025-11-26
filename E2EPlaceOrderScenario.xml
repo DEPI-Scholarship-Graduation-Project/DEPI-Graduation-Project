@@ -1,0 +1,7 @@
+<suite name="E2EPlaceOrderScenario">
+    <test name="E2EPlaceOrderScenario">
+        <classes>
+            <class name="PlaceOrderE2ETest"/>
+        </classes>
+    </test>
+</suite>
