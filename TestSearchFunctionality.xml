@@ -1,7 +1,7 @@
 <suite name="SearchTest">
     <test name="SearchTest">
         <classes>
-            <class name="search.SearchTest" />
+            <class name="SearchTest" />
         </classes>
     </test>
 </suite>

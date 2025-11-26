@@ -1,0 +1,49 @@
+{
+  "registerTests": [
+    {
+      "gender":"male",
+      "firstName": "",
+      "lastName": "",
+      "email": "testaffaires8@gmail.com",
+      "password": "Demo-shop-1234",
+      "confirmPassword": "Demo-shop-1234",
+      "result" : "success"
+    },
+    {
+      "gender":"male",
+      "firstName": "",
+      "lastName": "",
+      "email": "testaffaires8@gmail.com",
+      "password": "Demo-shop-1234",
+      "confirmPassword": "Demo-shop-1234",
+      "result" : "success"
+    },
+    {
+      "gender":"male",
+      "firstName": "",
+      "lastName": "",
+      "email": "testaffaires8@gmail.com",
+      "password": "Demo-shop-1234",
+      "confirmPassword": "Demo-shop-1234",
+      "result" : "success"
+    },
+    {
+      "gender":"male",
+      "firstName": "",
+      "lastName": "",
+      "email": "testaffaires8@gmail.com",
+      "password": "Demo-shop-1234",
+      "confirmPassword": "Demo-shop-1234",
+      "result" : "success"
+    },
+    {
+      "gender":"male",
+      "firstName": "",
+      "lastName": "",
+      "email": "testaffaires8@gmail.com",
+      "password": "Demo-shop-1234",
+      "confirmPassword": "Demo-shop-1234",
+      "result" : "success"
+    }
+  ]
+}

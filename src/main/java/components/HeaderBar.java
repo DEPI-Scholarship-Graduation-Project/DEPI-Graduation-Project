@@ -5,9 +5,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SearchPage;
+import pages.*;
 import utility.ElementWaitUtility;
 
 import java.time.Duration;
@@ -17,8 +15,10 @@ public class HeaderBar {
     private ElementWaitUtility elementWaitUtility;
 
     private final By websiteLogoLink = By.cssSelector("img[alt='Tricentis Demo Web Shop']");
-    private final By loginLink = By.linkText("Log in");
+    private final By loginLink = By.cssSelector(".header-links a[href='/login']");
+    private final By registerLink = By.cssSelector(".header-links a[href='/register']");
     private By logoutLink = By.linkText("Log out");
+    private By cartLink = By.linkText("Shopping cart");
     private final By searchBox = By.xpath("//input[@value='Search store']");
     private final By searchButton = By.xpath("//input[@value='Search']");;
 
@@ -43,10 +43,21 @@ public class HeaderBar {
         elementWaitUtility.click(loginLink);
         return new LoginPage(driver);
     }
+    public RegisterPage clickOnRegisterLink() {
+
+        elementWaitUtility.click(registerLink);
+        return new RegisterPage(driver);
+    }
+
     public HomePage clickOnLogOutLink() {
 
         elementWaitUtility.click(logoutLink);
         return new HomePage(driver);
+    }
+    public CartPage clickOnCartLink() {
+
+        elementWaitUtility.click(cartLink);
+        return new CartPage(driver);
     }
 
 
