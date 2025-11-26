@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.RegisterPage;
 import pages.SearchPage;
 import utility.ElementWaitUtility;
 
@@ -18,6 +19,7 @@ public class HeaderBar {
 
     private final By websiteLogoLink = By.cssSelector("img[alt='Tricentis Demo Web Shop']");
     private final By loginLink = By.cssSelector(".header-links a[href='/login']");
+    private final By registerLink = By.cssSelector(".header-links a[href='/register']");
     private By logoutLink = By.linkText("Log out");
     private final By searchBox = By.xpath("//input[@value='Search store']");
     private final By searchButton = By.xpath("//input[@value='Search']");;
@@ -43,6 +45,12 @@ public class HeaderBar {
         elementWaitUtility.click(loginLink);
         return new LoginPage(driver);
     }
+    public RegisterPage clickOnRegisterLink() {
+
+        elementWaitUtility.click(registerLink);
+        return new RegisterPage(driver);
+    }
+
     public HomePage clickOnLogOutLink() {
 
         elementWaitUtility.click(logoutLink);

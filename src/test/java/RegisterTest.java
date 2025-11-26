@@ -1,49 +1,47 @@
 
 import base.BaseTest;
-import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.LoginPage;
-import utility.JsonReader;
+import pages.ConfirmRegister;
+import pages.HomePage;
+import pages.RegisterPage;
+import utility.DataGenerator;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterTest extends BaseTest {
     private final Logger logger = LoggerFactory.getLogger(RegisterTest.class);
 
 
-    @DataProvider(name = "loginData")
-    public Object[][] loginDataProvider() {
-        return JsonReader.getJsonData(
-                "src/test/resources/testdata/loginData.json",
-                "loginTests"
-        );
-    }
+    @Test(invocationCount = 5)
+    public void VerifyUserLoginSuccessfulTest() {
 
+        RegisterPage registerPage = homePage.getHederBar().clickOnRegisterLink();
 
-    @Test(dataProvider = "loginData")
-    public void VerifyUserLoginSuccessfulTest(JsonNode data) {
+        Map<String, String> data = new HashMap<>();
+        data.put("gender", DataGenerator.randomGender());
+        data.put("firstName", DataGenerator.randomFirstName());
+        data.put("lastName", DataGenerator.randomLastName());
+        data.put("email", DataGenerator.randomEmail());
 
-        LoginPage loginPage = homePage.getHederBar().clickOnLoginLink();
+        String password = DataGenerator.randomPassword() ;
+        data.put("password", password);
+        data.put("confirmPassword",password);
 
-        String email = data.get("email").asText() ;
-        String password = data.get("password").asText();
-        String result = data.get("result").asText();
+        registerPage.enterRegisterFormData(data);
 
-        loginPage.enterUserEmail(email);
-        loginPage.enterPassword(password);
+        ConfirmRegister confirmRegister = registerPage.clickRegisterButton();
 
-        homePage = loginPage.clickLoginButton();
+        homePage = confirmRegister.clickOnContinueButton();
 
-        if(result.equalsIgnoreCase("success")){
-            Assert.assertTrue(homePage.getHederBar().isUserLoggedIn());
-            homePage.getHederBar().clickOnLogOutLink() ;
-            logger.info("User Login Successful!");
-        }else {
-            Assert.assertTrue(homePage.getHederBar().isUserNotLoggedIn());
-            logger.info("Login Failed!");
-        }
+        Assert.assertTrue(homePage.getHederBar().isUserLoggedIn());
+        homePage.getHederBar().clickOnLogOutLink() ;
+        logger.info("User Login Successful!");
 
     }
 }
