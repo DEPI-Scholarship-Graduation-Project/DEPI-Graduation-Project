@@ -1,6 +1,7 @@
 package utility;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,6 +39,7 @@ public class ElementWaitUtility {
     }
 
     public void click(By locator){
+        scrollTo(locator);
         waitForElementToBeClickable(locator).click();
     }
 
@@ -60,4 +62,11 @@ public class ElementWaitUtility {
         Select select = new Select(dropdown);
         select.selectByVisibleText(visibleText);
     }
+
+    public void scrollTo(By locator) {
+        WebElement element = waitForElementToBeVisible(locator);
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+    }
+
 }
