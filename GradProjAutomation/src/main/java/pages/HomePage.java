@@ -16,7 +16,7 @@ public class HomePage {
     private final By registerLink = By.linkText("Register");
     private final By loginLink = By.linkText("Log in");
     //Only in Logged-in Mode
-    private final By myAccountLink = By.xpath("//a[@class='account']");
+    private final By myAccountLink = By.xpath("//a[@class='account']"); // use with care as there are two elements with this xpath
     private final By logoutLink = By.linkText("Log out");
     //Other Locators can be added here
 
