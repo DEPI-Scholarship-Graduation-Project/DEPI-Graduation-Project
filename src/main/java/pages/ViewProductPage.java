@@ -16,6 +16,7 @@ public class ViewProductPage {
 
     private final By lastBreadcrumb = By.cssSelector(".breadcrumb li:last-child strong");
     private final By productTitle = By.cssSelector(".product-name h1");
+    private final By quantityInput = By.cssSelector(".qty-input");
     private final By addToCartButton = By.cssSelector(".add-to-cart-button");
     // toast
     private final By toast = By.cssSelector("p.content");
@@ -34,6 +35,11 @@ public class ViewProductPage {
         return driver.findElement(productTitle).getText();
     }
 
+    // create changeQuantity
+    public void changeQuantity(int quantity) {
+        driver.findElement(quantityInput).clear();
+        elementWaitUtility.enterInt(quantityInput, quantity);
+    }
     // click on addToCartButton
     public String clickOnAddToCartButton() {
         elementWaitUtility.click(addToCartButton);

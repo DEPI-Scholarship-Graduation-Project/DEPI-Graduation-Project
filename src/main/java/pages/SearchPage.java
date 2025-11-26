@@ -56,7 +56,7 @@ public class SearchPage {
     }
 
     public ViewProductPage clickOnProductTitle(String productTitle){
-        By productTitleElement = By.xpath("//a[contains(text(), '" + productTitle + "')]");
+        By productTitleElement = By.xpath("//h2 //a[contains(text(), '" + productTitle + "')]");
         elementWaitUtility.click(productTitleElement);
         return new ViewProductPage(driver);
     }

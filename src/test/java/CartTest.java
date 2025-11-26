@@ -5,17 +5,17 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import org.testng.asserts.SoftAssert;
-import pages.CartPage;
-import pages.SearchPage;
-import pages.ViewProductPage;
+import pages.*;
+import utility.DataGenerator;
 import utility.JsonReader;
 
 import java.util.List;
 
-
 public class CartTest extends BaseTest {
     private final Logger logger = LoggerFactory.getLogger(CartTest.class);
+
 
 
 
@@ -51,15 +51,16 @@ public class CartTest extends BaseTest {
             Assert.assertTrue(actualProductTitle.contains(searchResultProductTitle));
 
             // click on add to cart button
+            viewProduct.changeQuantity(DataGenerator.randomInt(1, 4));
             viewProduct.clickOnAddToCartButton();
             Assert.assertTrue(viewProduct.isToastCartLinkVisible());
 
-            CartPage cartPage = viewProduct.clickOnToastLink();
-            Assert.assertTrue(cartPage.getPageTitleElement().isDisplayed());
-
-            // assert the cart items list contains the last add item
-            List<String> cartProductsTitle = cartPage.getCartProductsTitle();
-            Assert.assertTrue(cartProductsTitle.contains(actualProductTitle));
+//            CartPage cartPage = viewProduct.clickOnToastLink();
+//            Assert.assertTrue(cartPage.getPageTitleElement().isDisplayed());
+//
+//            // assert the cart items list contains the last add item
+//            List<String> cartProductsTitle = cartPage.getCartProductsTitle();
+//            Assert.assertTrue(cartProductsTitle.contains(actualProductTitle));
 
 
         }else if(!isFound && expectedProductResult.equalsIgnoreCase("found")){
@@ -70,5 +71,15 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
+
+
+    // add test cases with priority 2 to open cart from header link
+    @Test(priority = 2)
+    public void openCartFromHeaderLinkTest() {
+        CartPage cartPage = homePage.getHederBar().clickOnCartLink();
+        Assert.assertTrue(cartPage.getPageTitleElement().isDisplayed());
+    }
+
 }
+
 

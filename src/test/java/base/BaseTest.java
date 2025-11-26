@@ -95,7 +95,7 @@ public class BaseTest {
 
     @AfterClass
     public void afterClass() {
-        driver.quit();
+//        driver.quit();
         logger.info("Driver quit");
     }
 }

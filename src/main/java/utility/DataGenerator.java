@@ -46,5 +46,14 @@ public class DataGenerator {
                 + digits.charAt(rand.nextInt(digits.length()));
         return part1 + "_" + part2 + timeSuffix();
     }
+
+    // creat randomInt(1, 10)
+    public static int randomInt(int min, int max) {
+        if (min > max) {
+            throw new IllegalArgumentException("min must be <= max");
+        }
+        return rand.nextInt(max - min + 1) + min;
+    }
+
 }
 
