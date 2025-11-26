@@ -1,6 +1,6 @@
+
 import base.BaseTest;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.openqa.selenium.NoAlertPresentException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import utility.JsonReader;
 
-public class LoginTest extends BaseTest {
-    private final Logger logger = LoggerFactory.getLogger(LoginTest.class);
+public class RegisterTest extends BaseTest {
+    private final Logger logger = LoggerFactory.getLogger(RegisterTest.class);
 
 
     @DataProvider(name = "loginData")
@@ -37,7 +37,6 @@ public class LoginTest extends BaseTest {
         homePage = loginPage.clickLoginButton();
 
         if(result.equalsIgnoreCase("success")){
-
             Assert.assertTrue(homePage.getHederBar().isUserLoggedIn());
             homePage.getHederBar().clickOnLogOutLink() ;
             logger.info("User Login Successful!");
@@ -48,3 +47,4 @@ public class LoginTest extends BaseTest {
 
     }
 }
+

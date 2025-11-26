@@ -1,1 +1,0 @@
-{"uuid":"af5f1cdd-8f31-44b8-a27a-6564b4412810","name":"E2ETest.login","children":["141fbf02-d54e-40d1-9515-8bf929ec9019"],"description":"","befores":[{"name":"login","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1764094584521,"stop":1764094586932}],"afters":[],"start":1764094584521,"stop":1764094586932}
