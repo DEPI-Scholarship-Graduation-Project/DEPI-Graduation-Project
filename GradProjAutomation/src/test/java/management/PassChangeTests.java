@@ -1,2 +1,4 @@
-package management;public class PassChangeTests {
+package management;
+
+public class PassChangeTests {
 }

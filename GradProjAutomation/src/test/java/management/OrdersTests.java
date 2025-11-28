@@ -1,2 +1,4 @@
-package management;public class OrdersTests {
+package management;
+
+public class OrdersTests {
 }

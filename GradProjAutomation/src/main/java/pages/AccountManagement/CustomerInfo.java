@@ -25,23 +25,42 @@ public class CustomerInfo {
     private final By email = By.id("Email");
     private final By btn = By.name("save-info-button");
 
+   private final By errorFname= By.xpath("//*[text()='First name is required.']");
+   private final By errorLname= By.xpath("//*[text()='Last name is required.']");
+   private final By errorEmail= By.xpath("//*[text()='Email is required.']");
+
+
     // methods
 
-    public void setFirstName(){
+    public void clearFields(){
+        driver.findElement(firstName).clear();
+        driver.findElement(lastName).clear();
+        driver.findElement(email).clear();
+
+    }
+
+    public void setFirstName(String name){
         wait.until(ExpectedConditions.visibilityOfElementLocated(firstName));
-        driver.findElement(firstName).sendKeys("Nour");
+        driver.findElement(firstName).sendKeys(name);
 
     }
 
-    public void  setLastName(){
+
+    public void  setLastName(String name){
         wait.until(ExpectedConditions.visibilityOfElementLocated(lastName));
-        driver.findElement(firstName).sendKeys("Elsaid");
+        driver.findElement(lastName).sendKeys(name);
 
     }
 
-    public void  setEmail(){
+    public String  getLastName(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(lastName));
+         return  driver.findElement(lastName).getAttribute("value");
+
+    }
+
+    public void  setEmail(String e){
         wait.until(ExpectedConditions.visibilityOfElementLocated(email));
-        driver.findElement(firstName).sendKeys("Nxxx@gmail.com");
+        driver.findElement(email).sendKeys(e);
 
     }
 
@@ -49,8 +68,29 @@ public class CustomerInfo {
 
     public void setGender() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(gender));
-        driver.findElement(firstName).click();
+        driver.findElement(gender).click();
     }
+
+    public String getErrorMsg(String field) {
+        switch (field){
+            case "F":
+                wait.until(ExpectedConditions.visibilityOfElementLocated(errorFname));
+               return driver.findElement(errorFname).getText();
+
+
+            case "L":
+                wait.until(ExpectedConditions.visibilityOfElementLocated(errorLname));
+                return driver.findElement(errorLname).getText();
+
+            case "E":
+                wait.until(ExpectedConditions.visibilityOfElementLocated(errorEmail));
+                return driver.findElement(errorEmail).getText();
+
+        }
+        return  "";
+
+    }
+
 
     public void submit() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(btn));

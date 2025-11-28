@@ -24,21 +24,21 @@ public class ChangePassword {
 
     // methods
 
-    public void setOldPassword(){
+    public void setOldPassword(String old){
         wait.until(ExpectedConditions.visibilityOfElementLocated(oldPassword));
-        driver.findElement(oldPassword).sendKeys("Nour");
+        driver.findElement(oldPassword).sendKeys(old);
 
     }
 
-    public void  setLastName(){
+    public void  setLastName(String newPass){
         wait.until(ExpectedConditions.visibilityOfElementLocated(newPassword));
-        driver.findElement(newPassword).sendKeys("Elsaid");
+        driver.findElement(newPassword).sendKeys(newPass);
 
     }
 
-    public void  setConfirm(){
+    public void  setConfirm(String confirm){
         wait.until(ExpectedConditions.visibilityOfElementLocated(confirmNewPassword));
-        driver.findElement(confirmNewPassword).sendKeys("Nxxx@gmail.com");
+        driver.findElement(confirmNewPassword).sendKeys(confirm);
 
     }
 
