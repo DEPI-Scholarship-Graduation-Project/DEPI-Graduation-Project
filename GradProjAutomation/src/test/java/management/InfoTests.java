@@ -25,7 +25,7 @@ public class InfoTests  extends BaseTest {
     {
         loginPage = homePage.clickOnLoginLink();
         loginPage.insertEmail("Nxxx@gmail.com");
-        loginPage.insertPassword("WJrb$vLE8Gjib");
+        loginPage.insertPassword("Nxxx@gmail.com");
         loginPage.clickOnLoginButton();
 
         manage = homePage.navToAccountManagement();
@@ -64,6 +64,39 @@ public class InfoTests  extends BaseTest {
 
         loginPage.insertEmail("Nxxx@gmail.com");
         loginPage.insertPassword("WJrb$vLE8Gjib");
+        loginPage.clickOnLoginButton();
+
+        manage = homePage.navToAccountManagement();
+
+        info = manage.navToInfo();
+
+        Assert.assertEquals(info.getLastName(), "Alabgar");
+    }
+
+    @Test
+    public void successfulEmailModification(){
+
+        /*
+         * Navigate to account management
+         * Navigate to Info
+         * Click on add btn
+         * fill fields
+         * submit
+         * assert
+         * */
+
+        info.clearFields();
+
+        info.setFirstName("Nour");
+        info.setLastName("Alabgar");
+        info.setEmail("Not@gmail.com");
+        info.submit();
+
+        homePage.clickOnLogoutLink();
+        homePage.clickOnLoginLink();
+
+        loginPage.insertEmail("Not@gmail.com");
+        loginPage.insertPassword("Nxxx@gmail.com");
         loginPage.clickOnLoginButton();
 
         manage = homePage.navToAccountManagement();

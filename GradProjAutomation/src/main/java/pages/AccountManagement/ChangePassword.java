@@ -25,6 +25,8 @@ public class ChangePassword {
     private final By errorOld= By.xpath("//*[text()='Old password is required.']");
     private final By errorNew= By.xpath("//*[text()='New password is required.']");
     private final By errorConfirm= By.xpath("//*[text()='Password is required.']");
+    private final By errorLess= By.xpath("//*[text()='The password should have at least 6 characters.']");
+    private final By errorWrongPass= By.cssSelector("div.validation-summary-errors ul li");
     private final By errorMismatching= By.xpath("//*[text()='The new password and confirmation password do not match.']");
 
 
@@ -73,6 +75,12 @@ public class ChangePassword {
             case "M":
                 wait.until(ExpectedConditions.visibilityOfElementLocated(errorMismatching));
                 return driver.findElement(errorMismatching).getText();
+            case "L":
+                wait.until(ExpectedConditions.visibilityOfElementLocated(errorLess));
+                return driver.findElement(errorLess).getText();
+            case "W":
+                wait.until(ExpectedConditions.visibilityOfElementLocated(errorWrongPass));
+                return driver.findElement(errorWrongPass).getText();
 
         }
         return  "";

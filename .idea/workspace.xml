@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16ab9c8d-0bc6-4a76-b70a-bc078cee8487" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/Checkout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GradProjAutomation/src/test/java/checkout/CheckoutTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/Addresses.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/Addresses.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/ChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/ChangePassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/Orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/Orders.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/Checkout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/test/java/checkout/CheckoutTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/test/java/checkout/CheckoutTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/AddTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/AddTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/InfoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/InfoTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/OrdersTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/PassChangeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/PassChangeTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,18 +59,18 @@
       <recent name="pages" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.CheckoutTests.successfulCheckout">
-    <configuration name="CheckoutTests.successfulCheckout" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.AddTests.deleteAddress">
+    <configuration name="AddTests.deleteAddress" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="GradProjAutomation" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="checkout.*" />
+          <option name="PATTERN" value="management.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="checkout" />
-      <option name="MAIN_CLASS_NAME" value="checkout.CheckoutTests" />
-      <option name="METHOD_NAME" value="successfulCheckout" />
+      <option name="PACKAGE_NAME" value="management" />
+      <option name="MAIN_CLASS_NAME" value="management.AddTests" />
+      <option name="METHOD_NAME" value="deleteAddress" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -75,7 +78,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CheckoutTests.uncheckedTerms" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AddTests.successfulAddAddress" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="GradProjAutomation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="management.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="management" />
+      <option name="MAIN_CLASS_NAME" value="management.AddTests" />
+      <option name="METHOD_NAME" value="successfulAddAddress" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CheckoutTests.orderSuccessfullyAddedToList" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="GradProjAutomation" />
       <extension name="coverage">
         <pattern>
@@ -85,7 +106,25 @@
       </extension>
       <option name="PACKAGE_NAME" value="checkout" />
       <option name="MAIN_CLASS_NAME" value="checkout.CheckoutTests" />
-      <option name="METHOD_NAME" value="uncheckedTerms" />
+      <option name="METHOD_NAME" value="orderSuccessfullyAddedToList" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InfoTests.successfulEmailModification" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="GradProjAutomation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="management.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="management" />
+      <option name="MAIN_CLASS_NAME" value="management.InfoTests" />
+      <option name="METHOD_NAME" value="successfulEmailModification" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -110,49 +149,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PassChangeTests.newPassMismatchingWithConfirmPass" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="GradProjAutomation" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="management.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="management" />
-      <option name="MAIN_CLASS_NAME" value="management.PassChangeTests" />
-      <option name="METHOD_NAME" value="newPassMismatchingWithConfirmPass" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PassChangeTests.successfulChangePassword" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="GradProjAutomation" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="management.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="management" />
-      <option name="MAIN_CLASS_NAME" value="management.PassChangeTests" />
-      <option name="METHOD_NAME" value="successfulChangePassword" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.CheckoutTests.successfulCheckout" />
-        <item itemvalue="TestNG.CheckoutTests.uncheckedTerms" />
-        <item itemvalue="TestNG.PassChangeTests.newPassMismatchingWithConfirmPass" />
+        <item itemvalue="TestNG.AddTests.deleteAddress" />
+        <item itemvalue="TestNG.AddTests.successfulAddAddress" />
+        <item itemvalue="TestNG.CheckoutTests.orderSuccessfullyAddedToList" />
+        <item itemvalue="TestNG.InfoTests.successfulEmailModification" />
         <item itemvalue="TestNG.PassChangeTests" />
-        <item itemvalue="TestNG.PassChangeTests.successfulChangePassword" />
       </list>
     </recent_temporary>
   </component>
@@ -177,29 +180,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/GradProjAutomation/src/test/java/checkout/CheckoutTests.java</url>
-          <line>23</line>
-          <properties class="checkout.CheckoutTests" method="setManageSteps">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/GradProjAutomation/src/test/java/checkout/CheckoutTests.java</url>
-          <line>44</line>
-          <properties class="checkout.CheckoutTests" method="uncheckedTerms">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

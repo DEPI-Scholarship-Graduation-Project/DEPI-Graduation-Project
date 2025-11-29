@@ -28,7 +28,9 @@ public class Checkout {
     private final By cnfBtn = By.xpath("//input[@value='Confirm' and contains(@class,'confirm-order-next-step-button')]");
 
    private final By successMsg = By.xpath("//strong[text()='Your order has been successfully processed!']");
-
+   private final By orderNumber = By.cssSelector("ul.details li:first-child");
+    private  final By orderNo = By.cssSelector("div.section.order-item div.title strong");
+    private final By addToCartBtn = By.cssSelector("input.button-2.product-box-add-to-cart-button");
     private final By pickUpInStore = By.id("PickUpInStore");
     private final By option0 = By.id("shippingoption_0");
     private final By option1 = By.id("shippingoption_1");
@@ -148,6 +150,24 @@ public class Checkout {
         return driver.findElement(successMsg).getText();
 
     }
+
+    public String getOrderNumber(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(orderNumber));
+        return driver.findElement(orderNumber).getText();
+
+    }
+
+    public String getOrderNoInList(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(orderNo));
+        return driver.findElement(orderNo).getText();
+
+    }
+
+/*    public void addToCart() {
+    //    wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartBtn));
+        driver.findElement(By.xpath("//input[@value='Add to cart']")).click();
+
+    }*/
 
 
 

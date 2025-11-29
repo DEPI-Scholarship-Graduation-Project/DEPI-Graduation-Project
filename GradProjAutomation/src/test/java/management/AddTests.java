@@ -23,8 +23,8 @@ public class AddTests extends BaseTest {
     private void setManageSteps()
     {
         loginPage = homePage.clickOnLoginLink();
-        loginPage.insertEmail("Nxxx@gmail.com");
-        loginPage.insertPassword("WJrb$vLE8Gjib");
+        loginPage.insertEmail("Not@gmail.com");
+        loginPage.insertPassword("Nxxx@gmail.com");
         loginPage.clickOnLoginButton();
 
         manage= homePage.navToAccountManagement();
@@ -66,14 +66,12 @@ public class AddTests extends BaseTest {
         homePage.clickOnLogoutLink();
         homePage.clickOnLoginLink();
 
-        loginPage.insertEmail("Nxxx@gmail.com");
-        loginPage.insertPassword("WJrb$vLE8Gjib");
+        loginPage.insertEmail("Not@gmail.com");
+        loginPage.insertPassword("Nxxx@gmail.com");
         loginPage.clickOnLoginButton();
 
         manage = homePage.navToAccountManagement();
         manage.navToAddresses();
-
-
 
 
 
@@ -301,7 +299,6 @@ public class AddTests extends BaseTest {
     }
 
     @Test
-
     public void addAddressWithoutCity(){
 
         /*
@@ -329,6 +326,24 @@ public class AddTests extends BaseTest {
         Assert.assertTrue(error.contains("City is required"));
 
     }
+
+
+    @Test
+    public void deleteAddress(){
+
+        /*
+         * Navigate to account management
+         * Navigate to Addresses
+         * Click on delete btn
+         * accept alert
+         * assert
+         * */
+
+        Assert.assertEquals(add.deleteAdd(),1);
+
+
+    }
+
 
 
 

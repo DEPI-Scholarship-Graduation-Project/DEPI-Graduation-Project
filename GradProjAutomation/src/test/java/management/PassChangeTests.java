@@ -53,7 +53,7 @@ public class PassChangeTests extends BaseTest {
          * */
         
         pass.setNewPassword("Nxxx@gmail.com");
-        pass.setOldPassword("WJrb$vLE8Gjib");
+        pass.setOldPassword("Nxxx@gmail.com");
         pass.setConfirm("Nxxx@gmail.com");
         pass.submit();
 
@@ -170,6 +170,55 @@ public class PassChangeTests extends BaseTest {
 
 
         Assert.assertTrue(error.contains("The new password and confirmation password do not match."));
+
+    }
+
+    @Test
+    public void newPassWithLengthLessThan6(){
+
+        /*
+         * Navigate to account management
+         * Navigate to Addresses
+         * Click on add btn
+         * fill fields
+         * submit
+         * assert
+         * */
+
+
+        pass.setOldPassword("Nxxx@gmail.com");
+        pass.setNewPassword("Nxxx");
+        pass.setConfirm("Nxxx");
+        pass.submit();
+
+        error = pass.getErrorMsg("L");
+
+
+        Assert.assertTrue(error.contains("The password should have at least 6 characters."));
+
+    }
+    @Test
+    public void wrongOldPass(){
+
+        /*
+         * Navigate to account management
+         * Navigate to Addresses
+         * Click on add btn
+         * fill fields
+         * submit
+         * assert
+         * */
+
+
+        pass.setOldPassword("Nxxxxx");
+        pass.setNewPassword("Nxxx@gmail.com");
+        pass.setConfirm("Nxxx@gmail.com");
+        pass.submit();
+
+        error = pass.getErrorMsg("W");
+
+
+        Assert.assertTrue(error.contains("Old password doesn't match"));
 
     }
 

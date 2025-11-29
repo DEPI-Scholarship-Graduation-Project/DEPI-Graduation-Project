@@ -20,6 +20,7 @@ public class Addresses {
 
     private final By saveBtn = By.cssSelector(".button-1.save-address-button");
     private final By edtBtn = By.cssSelector(".button-2.edit-address-button");
+    private final By deleteBtn = By.cssSelector(".button-2.delete-address-button");
     private final By address_item = By.cssSelector(".section.address-item");
 
     private final By firstName =By.id("Address_FirstName");
@@ -39,6 +40,7 @@ public class Addresses {
     private final By errorPhone= By.xpath("//*[text()='Phone is required']");
     private final By errorCity= By.xpath("//*[text()='City is required']");
     private final By errorAdd= By.xpath("//*[text()='Street address is required']");
+    private final By addressItems = By.cssSelector("div.section.address-item");
 
 
 
@@ -106,6 +108,16 @@ public class Addresses {
     public boolean addItemDisplayed () {
         wait.until(ExpectedConditions.visibilityOfElementLocated(address_item));
        return driver.findElement(address_item).isDisplayed();
+    }
+
+    public int deleteAdd () {
+        int beforeCount = driver.findElements(addressItems).size();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(deleteBtn));
+        driver.findElement(deleteBtn).click();
+        driver.switchTo().alert().accept();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(addressItems));
+        int after = driver.findElements(addressItems).size();
+        return beforeCount - after;
     }
 
 

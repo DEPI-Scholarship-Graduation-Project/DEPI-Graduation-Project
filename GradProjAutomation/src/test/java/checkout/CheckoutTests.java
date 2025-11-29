@@ -15,6 +15,7 @@ public class CheckoutTests extends BaseTest {
     LoginPage loginPage;
     Checkout process;
     String error;
+    Manage manage;
 
 
 
@@ -22,13 +23,10 @@ public class CheckoutTests extends BaseTest {
     private void setManageSteps()
     {
         loginPage = homePage.clickOnLoginLink();
-        loginPage.insertEmail("Nxxx@gmail.com");
+        loginPage.insertEmail("Not@gmail.com");
         loginPage.insertPassword("Nxxx@gmail.com");
         loginPage.clickOnLoginButton();
         process = homePage.navToCart();
-
-
-
 
 
     }
@@ -79,6 +77,27 @@ public class CheckoutTests extends BaseTest {
         error= process.getSuccessMsg();
 
         Assert.assertEquals(error, "Your order has been successfully processed!");
+
+    }
+
+    @Test
+    public void orderSuccessfullyAddedToList() throws InterruptedException{
+        /*
+         * go to cart
+         * check the checkbox
+         * start the process
+         * complete the full process
+         * checkout
+         *
+         * */
+      //  process.addToCart();
+        successfulCheckout();
+        error = process.getOrderNumber();
+
+        manage = homePage.navToAccountManagement();
+        manage.navToOrders();
+        Assert.assertEquals(error.toLowerCase(),process.getOrderNoInList().toLowerCase());
+
 
     }
 }
