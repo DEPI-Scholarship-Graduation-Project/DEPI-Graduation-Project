@@ -26,6 +26,7 @@ public class HomePage {
     //Only in Logged-in Mode
     private final By myAccountLink = By.xpath("//a[@class='account']");
     private final By logoutLink = By.linkText("Log out");
+    private final By cart = By.className("cart-label");
     //Other Locators can be added here
 
     //Actions
@@ -56,5 +57,13 @@ public class HomePage {
         driver.findElement(myAccountLink).click();
 
         return new Manage(driver);
+    }
+
+    public Checkout navToCart() {
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(cart));
+            driver.findElement(cart).click();
+            return new Checkout(driver);
+
     }
 }

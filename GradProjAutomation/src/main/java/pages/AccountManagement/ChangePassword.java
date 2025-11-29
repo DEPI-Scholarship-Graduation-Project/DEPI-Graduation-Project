@@ -20,7 +20,13 @@ public class ChangePassword {
     private final By oldPassword = By.id("OldPassword");
     private final By newPassword = By.id("NewPassword");
     private final By confirmNewPassword = By.id("ConfirmNewPassword");
-    private final By btn = By.name("button-1 change-password-button");
+    private final By changeBtn = By.cssSelector(".button-1.change-password-button");
+
+    private final By errorOld= By.xpath("//*[text()='Old password is required.']");
+    private final By errorNew= By.xpath("//*[text()='New password is required.']");
+    private final By errorConfirm= By.xpath("//*[text()='Password is required.']");
+    private final By errorMismatching= By.xpath("//*[text()='The new password and confirmation password do not match.']");
+
 
     // methods
 
@@ -30,13 +36,13 @@ public class ChangePassword {
 
     }
 
-    public void  setLastName(String newPass){
+    public void setNewPassword(String newPass){
         wait.until(ExpectedConditions.visibilityOfElementLocated(newPassword));
         driver.findElement(newPassword).sendKeys(newPass);
 
     }
 
-    public void  setConfirm(String confirm){
+    public void setConfirm(String confirm){
         wait.until(ExpectedConditions.visibilityOfElementLocated(confirmNewPassword));
         driver.findElement(confirmNewPassword).sendKeys(confirm);
 
@@ -45,7 +51,32 @@ public class ChangePassword {
 
 
     public void submit() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(btn));
-        driver.findElement(btn).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(changeBtn));
+        driver.findElement(changeBtn).click();
     }
+
+    public String getErrorMsg(String field) {
+        switch (field){
+            case "O":
+                wait.until(ExpectedConditions.visibilityOfElementLocated(errorOld));
+                return driver.findElement(errorOld).getText();
+
+
+            case "N":
+                wait.until(ExpectedConditions.visibilityOfElementLocated(errorNew));
+                return driver.findElement(errorNew).getText();
+
+            case "C":
+                wait.until(ExpectedConditions.visibilityOfElementLocated(errorConfirm));
+                return driver.findElement(errorConfirm).getText();
+
+            case "M":
+                wait.until(ExpectedConditions.visibilityOfElementLocated(errorMismatching));
+                return driver.findElement(errorMismatching).getText();
+
+        }
+        return  "";
+
+    }
+
 }
