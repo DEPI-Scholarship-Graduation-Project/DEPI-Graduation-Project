@@ -1,9 +1,8 @@
 package base;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -29,18 +28,5 @@ public class BaseTest {
     @AfterClass
     public void closeBrowser() { driver.quit(); }
 
-    protected void logoutBeforeTest()
-    {
-        try {
-            homePage.clickOnLogoutLink();
-            System.out.println("Optional logout element found and clicked.");
-        } catch (NoSuchElementException e) {
-            System.out.println("Optional logout element not present. Skipping action and continuing test.");
-        }
-    }
 
-    protected void assertTestResult(String actualResult, String expectedResult)
-    {
-        Assert.assertTrue(actualResult.contains(expectedResult));
-    }
 }
