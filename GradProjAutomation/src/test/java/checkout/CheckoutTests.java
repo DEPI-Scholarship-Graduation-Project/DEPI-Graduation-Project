@@ -100,4 +100,23 @@ public class CheckoutTests extends BaseTest {
 
 
     }
+
+    @Test
+    public void isGuestCheckout() {
+        /*
+         *log out
+         * go to cart
+         * start the process
+         *
+         * */
+        homePage.clickOnLogoutLink();
+        process = homePage.navToCart();
+
+
+        error = process.isGuestMode();
+
+        Assert.assertTrue(error.contains("Welcome, Please Sign In"));
+
+
+    }
 }

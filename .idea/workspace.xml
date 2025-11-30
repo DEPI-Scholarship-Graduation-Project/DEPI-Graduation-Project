@@ -6,15 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="16ab9c8d-0bc6-4a76-b70a-bc078cee8487" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/Addresses.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/Addresses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/ChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/ChangePassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/AccountManagement/Orders.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/Checkout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/main/java/pages/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/test/java/checkout/CheckoutTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/test/java/checkout/CheckoutTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/AddTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/AddTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/InfoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/InfoTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/OrdersTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/PassChangeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/GradProjAutomation/src/test/java/management/PassChangeTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +54,7 @@
       <recent name="pages" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.AddTests.deleteAddress">
+  <component name="RunManager" selected="TestNG.CheckoutTests.isGuestCheckout">
     <configuration name="AddTests.deleteAddress" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="GradProjAutomation" />
       <extension name="coverage">
@@ -89,6 +84,24 @@
       <option name="PACKAGE_NAME" value="management" />
       <option name="MAIN_CLASS_NAME" value="management.AddTests" />
       <option name="METHOD_NAME" value="successfulAddAddress" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CheckoutTests.isGuestCheckout" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="GradProjAutomation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="checkout.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="checkout" />
+      <option name="MAIN_CLASS_NAME" value="checkout.CheckoutTests" />
+      <option name="METHOD_NAME" value="isGuestCheckout" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -132,30 +145,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PassChangeTests" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="GradProjAutomation" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="management.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="management" />
-      <option name="MAIN_CLASS_NAME" value="management.PassChangeTests" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.CheckoutTests.isGuestCheckout" />
         <item itemvalue="TestNG.AddTests.deleteAddress" />
         <item itemvalue="TestNG.AddTests.successfulAddAddress" />
         <item itemvalue="TestNG.CheckoutTests.orderSuccessfullyAddedToList" />
         <item itemvalue="TestNG.InfoTests.successfulEmailModification" />
-        <item itemvalue="TestNG.PassChangeTests" />
       </list>
     </recent_temporary>
   </component>

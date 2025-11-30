@@ -40,9 +40,13 @@ public class Checkout {
     private final By pay1 = By.id("paymentmethod_1");
     private final By pay2 = By.id("paymentmethod_2");
     private final By pay3 = By.id("paymentmethod_3");
+    private final By logOut = By.linkText("Log out");
+    List<WebElement> items = driver.findElements(By.cssSelector(".item-box"));
+    private final By signInMode = By.xpath("//h1[text()='Welcome, Please Sign In!']");
 
 
-   private final By alert = By.id("ui-id-2");
+
+    private final By alert = By.id("ui-id-2");
 
 
     public void setCheckBox() {
@@ -163,12 +167,17 @@ public class Checkout {
 
     }
 
-/*    public void addToCart() {
-    //    wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartBtn));
-        driver.findElement(By.xpath("//input[@value='Add to cart']")).click();
+    public String isGuestMode(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(signInMode));
+        return driver.findElement(signInMode).getText();
 
+    }
+
+
+/*    public void clickOnLogOutButton()
+    {
+        driver.findElement(logOut).click();
     }*/
-
 
 
 

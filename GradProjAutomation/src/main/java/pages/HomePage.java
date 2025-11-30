@@ -2,11 +2,13 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.AccountManagement.Manage;
 
 import java.time.Duration;
+import java.util.List;
 
 public class HomePage {
     WebDriver driver;
@@ -60,6 +62,11 @@ public class HomePage {
     }
 
     public Checkout navToCart() {
+              List<WebElement> items = driver.findElements(By.cssSelector(".item-box"));
+
+            WebElement secondItem = items.get(1);
+
+            secondItem.findElement(By.cssSelector("input[value='Add to cart']")).click();
 
             wait.until(ExpectedConditions.visibilityOfElementLocated(cart));
             driver.findElement(cart).click();

@@ -16,6 +16,7 @@ public class LoginPage {
     private final By rememberMeCheckBox = By.xpath("//input[@id='RememberMe']");
     private final By forgotPasswordLink = By.linkText("Forgot password?");
     private final By loginButton = By.xpath("//input[@value='Log in']");
+    private final By logOutButton = By.linkText("Log out");
     private final By invalidEmailFormatMessage = By.xpath("//span[@class='field-validation-error']");
     private final By failedLoginErrorMessage = By.xpath("//div[@class='validation-summary-errors']");
 
@@ -39,6 +40,7 @@ public class LoginPage {
     {
         driver.findElement(loginButton).click();
     }
+
 
     public PasswordRecoveryPage clickOnForgotPasswordLink()
     {
