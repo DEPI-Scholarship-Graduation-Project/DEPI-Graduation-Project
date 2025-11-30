@@ -2,7 +2,7 @@ package base;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -18,7 +18,7 @@ public class BaseTest {
 
     @BeforeClass
     public void setup() {
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
     }
@@ -33,9 +33,9 @@ public class BaseTest {
     {
         try {
             homePage.clickOnLogoutLink();
-            System.out.println("Optional element found and clicked.");
+            System.out.println("Optional logout element found and clicked.");
         } catch (NoSuchElementException e) {
-            System.out.println("Optional element not present. Skipping action and continuing test.");
+            System.out.println("Optional logout element not present. Skipping action and continuing test.");
         }
     }
 
