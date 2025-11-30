@@ -33,9 +33,9 @@ public class BaseTest {
     {
         try {
             homePage.clickOnLogoutLink();
-            System.out.println("Optional element found and clicked.");
+            System.out.println("Optional logout element found and clicked.");
         } catch (NoSuchElementException e) {
-            System.out.println("Optional element not present. Skipping action and continuing test.");
+            System.out.println("Optional logout element not present. Skipping action and continuing test.");
         }
     }
 

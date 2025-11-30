@@ -26,8 +26,8 @@ public class ForgetPasswordSteps {
         passwordRecoveryPage.clickOnRecoverButton();
     }
 
-    @Then("The message message {string} appears")
-    public void theMessageMessageAppears(String message) {
+    @Then("The message {string} appears")
+    public void theMessageAppears(String message) {
         Hooks.assertTestResult(passwordRecoveryPage.getResultMessage(), message);
     }
 

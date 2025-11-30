@@ -10,16 +10,22 @@ public class RegistrationTests extends BaseTest {
     RegistrationCompletionPage registrationCompletionPage;
     String firstName = "Mohamed";
     String lastName = "Abdulaziz";
-    String validEmail = "mohamed123.aziz@example.com";
+    String validEmail = "mohamed123.aziz@test1.com";
     String registeredEmail = "ironmedo100@gmail.com";
     String validPassword = "QaTest@123";
     String invalidEmailFormat = "mohamed.aziz@example";
     String shortPassword = "123";
+    String gender = "Male";
 
-    private void registrationSteps(String firstName, String lastName, String email, String password, String confirmPassword)
+    private void registrationSteps(String gender, String firstName, String lastName, String email, String password, String confirmPassword)
     {
         registerPage = homePage.clickOnRegisterLink();
-        registerPage.selectMaleGender();
+        gender = gender.toLowerCase();
+        if (gender.equals("male") || gender.equals("m"))
+            registerPage.selectMaleGender();
+        else if (gender.equals("female") || gender.equals("f"))
+            registerPage.selectFemaleGender();
+        // else System.out.println("Please Choose any variation of Male or Female");
         registerPage.insertFirstName(firstName);
         registerPage.insertLasName(lastName);
         registerPage.insertEmail(email);
@@ -32,58 +38,58 @@ public class RegistrationTests extends BaseTest {
     public void testSuccessfulRegistration()
     {
         logoutBeforeTest();
-        registrationSteps(firstName, lastName, validEmail, validPassword, validPassword);
+        registrationSteps(gender, firstName, lastName, validEmail, validPassword, validPassword);
 
         String registrationCompletionMessageText = "Your registration completed";
         assertTestResult(registrationCompletionPage.getCompletionMessage(), registrationCompletionMessageText);
         registrationCompletionPage.clickOnContinueButton();
     }
 
-    @Test(priority = 5)
+    @Test(priority = 4)
     public void testEmptyFirstName()
     {
         logoutBeforeTest();
-        registrationSteps("", lastName, validEmail, validPassword, validPassword);
+        registrationSteps(gender, "", lastName, validEmail, validPassword, validPassword);
 
         String emptyFirstNameErrorMessageText = "First name is required.";
         assertTestResult(registerPage.getFirstNameErrorMessage(), emptyFirstNameErrorMessageText);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 4)
     public void testEmptyLastName()
     {
         logoutBeforeTest();
-        registrationSteps(firstName, "", validEmail, validPassword, validPassword);
+        registrationSteps(gender, firstName, "", validEmail, validPassword, validPassword);
 
         String emptyLastNameErrorMessageText = "Last name is required.";
         assertTestResult(registerPage.getLastNameErrorMessage(), emptyLastNameErrorMessageText);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 4)
     public void testEmptyEmail()
     {
         logoutBeforeTest();
-        registrationSteps(firstName, lastName, "", validPassword, validPassword);
+        registrationSteps(gender, firstName, lastName, "", validPassword, validPassword);
 
         String emptyEmailErrorMessageText = "Email is required.";
         assertTestResult(registerPage.getEmailErrorMessage(), emptyEmailErrorMessageText);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 4)
     public void testEmptyPassword()
     {
         logoutBeforeTest();
-        registrationSteps(firstName, lastName, validEmail, "", validPassword);
+        registrationSteps(gender, firstName, lastName, validEmail, "", validPassword);
 
         String emptyPasswordErrorMessageText = "Password is required.";
         assertTestResult(registerPage.getPasswordErrorMessage(), emptyPasswordErrorMessageText);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 4)
     public void testEmptyConfirmPassword()
     {
         logoutBeforeTest();
-        registrationSteps(firstName, lastName, validEmail, validPassword, "");
+        registrationSteps(gender, firstName, lastName, validEmail, validPassword, "");
 
         String emptyConfirmPasswordErrorMessageText = "Password is required.";
         assertTestResult(registerPage.getConfirmPasswordErrorMessage(), emptyConfirmPasswordErrorMessageText);
@@ -93,7 +99,7 @@ public class RegistrationTests extends BaseTest {
     public void testInvalidEmailFormat()
     {
         logoutBeforeTest();
-        registrationSteps(firstName, lastName, invalidEmailFormat, validPassword, validPassword);
+        registrationSteps(gender, firstName, lastName, invalidEmailFormat, validPassword, validPassword);
 
         String invalidEmailFormatErrorMessageText = "Wrong email";
         assertTestResult(registerPage.getEmailErrorMessage(), invalidEmailFormatErrorMessageText);
@@ -104,7 +110,7 @@ public class RegistrationTests extends BaseTest {
     public void testMismatchingPasswords()
     {
         logoutBeforeTest();
-        registrationSteps(firstName, lastName, validEmail, validPassword, validPassword.concat(validPassword));
+        registrationSteps(gender, firstName, lastName, validEmail, validPassword, validPassword.concat(validPassword));
 
         String mismatchingConfirmPasswordErrorMessageText = "The password and confirmation password do not match.";
         assertTestResult(registerPage.getConfirmPasswordErrorMessage(), mismatchingConfirmPasswordErrorMessageText);
@@ -114,7 +120,7 @@ public class RegistrationTests extends BaseTest {
     public void testShortPassword()
     {
         logoutBeforeTest();
-        registrationSteps(firstName, lastName, validEmail, shortPassword, shortPassword);
+        registrationSteps(gender, firstName, lastName, validEmail, shortPassword, shortPassword);
 
         String shortPasswordErrorMessageText = "The password should have at least 6 characters.";
         assertTestResult(registerPage.getPasswordErrorMessage(), shortPasswordErrorMessageText);
@@ -124,9 +130,19 @@ public class RegistrationTests extends BaseTest {
     public void testAlreadyRegisteredEmail()
     {
         logoutBeforeTest();
-        registrationSteps(firstName, lastName, registeredEmail, validPassword, validPassword);
+        registrationSteps(gender, firstName, lastName, registeredEmail, validPassword, validPassword);
 
         String registeredEmailErrorMessageText = "The specified email already exists";
         assertTestResult(registerPage.getExistingEmailErrorMessage(), registeredEmailErrorMessageText);
+    }
+
+    @Test(priority = 5)
+    public void testNotSelectingGender()
+    {
+        logoutBeforeTest();
+        registrationSteps("", firstName, lastName, validEmail, validPassword, validPassword);
+
+        String notSelectedGenderErrorMessageText = "Gender is required.";
+        assertTestResult(registerPage.getGenderNotSelectedErrorMessage(), notSelectedGenderErrorMessageText);
     }
 }

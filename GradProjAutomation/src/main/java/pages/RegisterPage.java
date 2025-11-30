@@ -1,7 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Objects;
 
 public class RegisterPage {
     WebDriver driver;
@@ -18,6 +21,7 @@ public class RegisterPage {
     private final By passwordBox = By.xpath("//input[@id='Password']");
     private final By confirmPasswordBox = By.xpath("//input[@id='ConfirmPassword']");
     private final By registerButton = By.xpath("//input[@id='register-button']");
+    private final By genderNotSelectedErrorMessage = By.xpath("//span[@data-valmsg-for='Gender']");
     private final By firstNameErrorMessage = By.xpath("//span[@data-valmsg-for='FirstName']");
     private final By lastNameErrorMessage = By.xpath("//span[@data-valmsg-for='LastName']");
     private final By emailErrorMessage = By.xpath("//span[@data-valmsg-for='Email']");
@@ -59,6 +63,14 @@ public class RegisterPage {
     {
         driver.findElement(registerButton).click();
         return new RegistrationCompletionPage(driver);
+    }
+    public String getGenderNotSelectedErrorMessage()
+    {
+        try{
+            return driver.findElement(genderNotSelectedErrorMessage).getText();
+        } catch (NoSuchElementException e) {
+            return "Error message locator doesn't exist";
+        }
     }
     public String getFirstNameErrorMessage()
     {
