@@ -30,7 +30,6 @@ public class RegisterPage {
     public void selectMaleGender()
     {
         driver.findElement(maleRadioButton).click();
-
     }
     public void selectFemaleGender()
     {

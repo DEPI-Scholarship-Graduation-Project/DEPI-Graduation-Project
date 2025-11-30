@@ -1,6 +1,5 @@
 package stepsdef;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,8 +12,7 @@ public class LoginSteps {
     WebDriver driver = Hooks.getDriver();
     HomePage homePage = new HomePage(driver);
     LoginPage loginPage;
-    String validEmail = "mohamed123.aziz@example.com";
-    String validPassword = "QaTest@123";
+    String validEmail;
 
     private void loginBasicSteps(String email, String password)
     {
@@ -24,13 +22,14 @@ public class LoginSteps {
     }
 
     @Given("User opens Home page and clicks on login link")
-    public void user_opens_home_page_and_clicks_on_login_link() {
+    public void userOpensHomePageAndClicksOnLoginLink() {
         loginPage = homePage.clickOnLoginLink();
     }
 
-    @When("User enters valid email and password and press on login button")
-    public void userEntersValidEmailAndPasswordAndPressOnLoginButton() {
-        loginBasicSteps(validEmail, validPassword);
+    @When("User enters valid email {string} and password {string} and press on login button")
+    public void userEntersValidEmailAndPasswordAndPressOnLoginButton(String email, String password) {
+        loginBasicSteps(email, password);
+        validEmail = email;
     }
 
     @Then("Home page opens successfully and user is in logged in mode")
@@ -69,4 +68,5 @@ public class LoginSteps {
     public void userEntersValidAndInvalidAndPressOnLoginButton(String email, String password) {
         loginBasicSteps(email, password);
     }
+
 }

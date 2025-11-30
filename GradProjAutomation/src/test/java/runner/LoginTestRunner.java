@@ -7,5 +7,5 @@ import io.cucumber.testng.CucumberOptions;
         glue = "stepsdef",
         tags = "@HappyScenario or @Regression",
         plugin = {"pretty", "html:target/reports/LoginReport.html"})
-public class LoginTestsRunner extends AbstractTestNGCucumberTests {
+public class LoginTestRunner extends AbstractTestNGCucumberTests {
 }

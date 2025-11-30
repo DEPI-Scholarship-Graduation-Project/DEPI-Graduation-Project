@@ -2,7 +2,7 @@ Feature: Login Feature
   @HappyScenario
   Scenario: Valid Login
     Given User opens Home page and clicks on login link
-    When User enters valid email and password and press on login button
+    When User enters valid email "mohamed123.aziz@example.com" and password "QaTest@123" and press on login button
     Then Home page opens successfully and user is in logged in mode
 
   @Regression
