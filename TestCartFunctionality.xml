@@ -1,0 +1,7 @@
+<suite name="TestCartFunctionality">
+    <test name="CartTest">
+        <classes>
+            <class name="CartTest"/>
+        </classes>
+    </test>
+</suite>

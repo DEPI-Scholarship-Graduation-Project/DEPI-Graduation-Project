@@ -8,10 +8,10 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.support.ThreadGuard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 import utility.ConfigReader;
@@ -21,15 +21,20 @@ import java.util.Map;
 
 public class BaseTest {
 
-    protected WebDriver driver;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected HomePage homePage;
     private final Logger logger = LoggerFactory.getLogger(BaseTest.class);
 
-    @BeforeClass
-    public void beforeClass() {
+    public WebDriver getDriver() {
+        return driver.get();
+    }
+
+    @BeforeMethod
+    public void setUp() {
 
         String browser = ConfigReader.get("browser").toLowerCase();
         boolean headless = Boolean.parseBoolean(ConfigReader.get("headless"));
+        WebDriver webDriver;
 
         switch (browser) {
 
@@ -46,7 +51,7 @@ public class BaseTest {
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 if (headless) chromeOptions.addArguments("--headless=new");
                 chromeOptions.addArguments("--window-size=1920,1080");
-                driver = new ChromeDriver(chromeOptions);
+                webDriver = ThreadGuard.protect( new ChromeDriver(chromeOptions));
                 break;
 
             case "edge":
@@ -60,7 +65,7 @@ public class BaseTest {
                 edgeOptions.addArguments("--disable-notifications");
                 edgeOptions.addArguments("--window-size=1920,1080");
                 if (headless) edgeOptions.addArguments("--headless");
-                driver = new EdgeDriver(edgeOptions);
+                webDriver = ThreadGuard.protect( new EdgeDriver(edgeOptions));
                 break;
 
             case "firefox":
@@ -78,24 +83,24 @@ public class BaseTest {
                 if (headless) firefoxOptions.addArguments("--headless");
                 firefoxOptions.addArguments("--width=1920");
                 firefoxOptions.addArguments("--height=1080");
-                driver = new FirefoxDriver(firefoxOptions);
+                webDriver = ThreadGuard.protect( new FirefoxDriver(firefoxOptions));
                 break;
 
             default:
                 throw new RuntimeException("Invalid browser: " + browser);
         }
 
-        homePage = new HomePage(driver);
+        driver.set(webDriver);
+        getDriver().manage().window().maximize();
+
+        getDriver().get(ConfigReader.get("baseUrl"));
+        homePage = new HomePage(getDriver());
     }
 
-    @BeforeMethod
-    public void beforeMethod() {
-        driver.get(ConfigReader.get("baseUrl"));
-    }
-
-    @AfterClass
-    public void afterClass() {
-//        driver.quit();
-        logger.info("Driver quit");
+    @AfterMethod
+    public void tearDown() {
+        getDriver().quit();
+        driver.remove();
+        logger.info("Driver quit for thread: " + Thread.currentThread().getId());
     }
 }

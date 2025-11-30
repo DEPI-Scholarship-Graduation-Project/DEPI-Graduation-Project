@@ -1,0 +1,7 @@
+<suite name="TestRegisterFunctionality">
+    <test name="RegisterTest">
+        <classes>
+            <class name="RegisterTest"/>
+        </classes>
+    </test>
+</suite>

@@ -19,7 +19,7 @@ public class RegisterTest extends BaseTest {
 
 
     @Test(invocationCount = 5)
-    public void VerifyUserLoginSuccessfulTest() {
+    public void VerifyUserRegisterSuccessfulTest() {
 
         RegisterPage registerPage = homePage.getHederBar().clickOnRegisterLink();
 

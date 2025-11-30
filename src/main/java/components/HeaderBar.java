@@ -18,7 +18,7 @@ public class HeaderBar {
     private final By loginLink = By.cssSelector(".header-links a[href='/login']");
     private final By registerLink = By.cssSelector(".header-links a[href='/register']");
     private By logoutLink = By.linkText("Log out");
-    private By cartLink = By.linkText("Shopping cart");
+    private By cartLink = By.cssSelector(".header-links #topcartlink .cart-label");
     private final By searchBox = By.xpath("//input[@value='Search store']");
     private final By searchButton = By.xpath("//input[@value='Search']");;
 

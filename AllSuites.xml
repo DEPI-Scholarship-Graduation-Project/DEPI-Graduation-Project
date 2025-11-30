@@ -6,9 +6,11 @@
     </listeners>
 
     <suite-files>
+        <suite-file path="TestRegisterFunctionality.xml"/>
         <suite-file path="TestLoginFunctionality.xml"/>
         <suite-file path="TestSearchFunctionality.xml"/>
         <suite-file path="TestViewProductFunctionality.xml"/>
+        <suite-file path="TestCartFunctionality.xml"/>
         <suite-file path="E2EPlaceOrderScenario.xml"/>
     </suite-files>
 
