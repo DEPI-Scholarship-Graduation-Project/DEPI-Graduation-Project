@@ -32,8 +32,8 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
 
-        String browser = ConfigReader.get("browser").toLowerCase();
-        boolean headless = Boolean.parseBoolean(ConfigReader.get("headless"));
+        String browser = System.getProperty("browser", "chrome");
+        boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
         WebDriver webDriver;
 
         switch (browser) {
