@@ -29,6 +29,7 @@ public class HomePage {
     private final By myAccountLink = By.xpath("//a[@class='account']"); // use with care as there are two elements with this xpath
     private final By logoutLink = By.linkText("Log out");
     private final By cart = By.className("cart-label");
+    private final By clickonBooks = By.linkText("Books");
     //Other Locators can be added here
 
     //Actions
@@ -72,5 +73,11 @@ public class HomePage {
             driver.findElement(cart).click();
             return new Checkout(driver);
 
+    }
+
+    public BooksPage selectBookproducts()
+    {
+        driver.findElement(clickonBooks).click();
+        return new BooksPage(driver);
     }
 }
